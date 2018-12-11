@@ -46,6 +46,7 @@ public class Register extends AppCompatActivity {
                                 contact.setName(name);
                                 contact.setAge(1);
                                 contact.setPassword(password);
+                                contact.setMyText("");
 
                                 helper.insertContact(contact);
                                 toastMessage("Registered");

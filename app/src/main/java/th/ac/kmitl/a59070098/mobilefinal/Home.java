@@ -33,9 +33,10 @@ public class Home extends AppCompatActivity {
 
         //SharedPreference
         String name = mPreferences.getString(getString(R.string.name), "");
+        String text = mPreferences.getString(getString(R.string.text), "");
 
         home_hello.setText("Hello " + name);
-        home_text.setText("This is my quote ");
+        home_text.setText("This is my quote " + text);
 
         // Make link to Profile
         home_pro_btn.setOnClickListener(new View.OnClickListener() {

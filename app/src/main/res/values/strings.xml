@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">mobilefinal</string>
+    <string name="id_name">th.ac.kmitl.a59070098.mobilefinal.mIdName</string>
     <string name="name">th.ac.kmitl.a59070098.mobilefinal.mName</string>
+    <string name="age">th.ac.kmitl.a59070098.mobilefinal.mAge</string>
+    <string name="password">th.ac.kmitl.a59070098.mobilefinal.mPassword</string>
     <string name="text">th.ac.kmitl.a59070098.mobilefinal.mText</string>
+
 </resources>

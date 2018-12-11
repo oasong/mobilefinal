@@ -14,6 +14,7 @@ public class DatabaseHelperLogin extends SQLiteOpenHelper {
     private static final String COL_NAME = "name";
     private static final String COL_AGE = "age";
     private static final String COL_PASSWORD = "password";
+    private static final String COL_TEXT = "text";
 
     public DatabaseHelperLogin(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -22,7 +23,7 @@ public class DatabaseHelperLogin extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (id INTEGER PRIMARY KEY, " +
-                COL_ID + " TEXT NOT NULL," + COL_NAME + " TEXT NOT NULL, " + COL_AGE + " INT, " + COL_PASSWORD + " TEXT NOT NULL)";
+                COL_ID + " TEXT NOT NULL," + COL_NAME + " TEXT NOT NULL, " + COL_AGE + " INT, " + COL_PASSWORD + " TEXT NOT NULL, " + COL_TEXT + "TEXT)";
         db.execSQL(createTable);
     }
 
@@ -45,6 +46,8 @@ public class DatabaseHelperLogin extends SQLiteOpenHelper {
         contentValues.put(COL_NAME, c.getName());
         contentValues.put(COL_AGE, c.getAge());
         contentValues.put(COL_PASSWORD, c.getPassword());
+        contentValues.put(COL_TEXT, c.getMyText());
+
         db.insert(TABLE_NAME, null, contentValues);
         db.close();
     }
@@ -71,6 +74,22 @@ public class DatabaseHelperLogin extends SQLiteOpenHelper {
     public Cursor getItemName(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL_NAME + " FROM " + TABLE_NAME +
+                " WHERE " + COL_ID + " = '" + id + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getItemAge(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL_AGE + " FROM " + TABLE_NAME +
+                " WHERE " + COL_ID + " = '" + id + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getItemText(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL_TEXT + " FROM " + TABLE_NAME +
                 " WHERE " + COL_ID + " = '" + id + "'";
         Cursor data = db.rawQuery(query, null);
         return data;

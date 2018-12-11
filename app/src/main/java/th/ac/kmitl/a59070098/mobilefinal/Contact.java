@@ -1,7 +1,7 @@
 package th.ac.kmitl.a59070098.mobilefinal;
 
 public class Contact {
-    String id_name, name, password;
+    String id_name, name, password,text;
     int age;
 
     public Contact() {
@@ -41,5 +41,13 @@ public class Contact {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getMyText() {
+        return text;
+    }
+
+    public void setMyText(String text) {
+        this.text = text;
     }
 }

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     String checkPassword = helper.searchPassword(id);
                     if (password.equals(checkPassword)){
-                        // Get name From SQLite
+                        // Get item From SQLite
                         Cursor data = helper.getItemName(id);
                         String name = "";
                         while (data.moveToNext()){
@@ -66,9 +66,38 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Log.d("Check name","name = " + name);
 
+                        Cursor data1 = helper.getItemAge(id);
+                        int age = 0;
+                        while (data.moveToNext()){
+                            age = data.getInt(0);
+                        }
+
+//                        Cursor data2 = helper.getItemText(id);
+//                        String text = "";
+//                        while (data.moveToNext()){
+//                            text = data.getString(0);
+//                        }
+
+
                         // SharePreference
                         mEditor.putString(getString(R.string.name), name);
                         mEditor.commit();
+
+                        mEditor.putString(getString(R.string.id_name), id);
+                        mEditor.commit();
+
+                        mEditor.putString(getString(R.string.password), password);
+                        mEditor.commit();
+
+                        mEditor.putInt(getString(R.string.age), age);
+                        mEditor.commit();
+
+                        mEditor.putString(getString(R.string.text), "My quote");
+                        mEditor.commit();
+
+
+//                        mEditor.putString(getString(R.string.text), text);
+//                        mEditor.commit();
 
                         Intent intent = new Intent(MainActivity.this, Home.class);
                         startActivity(intent);
